@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">VoiceTranslater</string>
     <string name="action_settings">Settings</string>
+
+    <string name="ok">OK</string>
+
+    <!--  権限要求  -->
+    <string name="permission_record_audio">録音権限</string>
+    <string name="permission_record_audio_message">このアプリは音声認識を使用するので、使用するにはマイクへのアクセス権限が必要です。</string>
+
+    <!--  ボタン  -->
+    <string name="button_start">Start</string>
+    <string name="button_stop">Stop</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
