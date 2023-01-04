@@ -6,6 +6,9 @@ import java.util.*
 
 class VoiceRecognize {
     companion object {
+        /**
+         * 音声認識の言語
+         */
         enum class Lang {
             JAPANESE,
             ENGLISH,
@@ -13,6 +16,12 @@ class VoiceRecognize {
             OTHER
         }
 
+        /**
+         * 音声認識を行う。
+         *
+         * @param langType 音声認識の言語
+         * @return 音声認識の Intent
+         */
         fun speech(langType: Lang): Intent {
             val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
 
