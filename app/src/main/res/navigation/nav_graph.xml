@@ -16,7 +16,7 @@
             app:destination="@id/SecondFragment" />
         <action
             android:id="@+id/action_FirstFragment_to_recognizeFragment"
-            app:destination="@id/recognizeFragment" />
+            app:destination="@id/RecognizeFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -29,7 +29,7 @@
             app:destination="@id/FirstFragment" />
     </fragment>
     <fragment
-        android:id="@+id/recognizeFragment"
+        android:id="@+id/RecognizeFragment"
         android:name="com.waigoma.voicetranslater.RecognizeFragment"
-        android:label="RecognizeFragment" />
+        android:label="@string/recognize_fragment_label" />
 </navigation>
