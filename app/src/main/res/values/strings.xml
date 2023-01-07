@@ -19,9 +19,9 @@
     <string name="default_trans_text">翻訳された文字</string>
 
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="recognize_fragment_label">Recognize Fragment</string>
+    <string name="first_fragment_label">翻訳モード選択</string>
+    <string name="second_fragment_label">リアルタイム翻訳</string>
+    <string name="recognize_fragment_label">逐次翻訳</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
