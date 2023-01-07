@@ -18,6 +18,13 @@
     <string name="default_rec_text">認識された文字</string>
     <string name="default_trans_text">翻訳された文字</string>
 
+    <!--  Settings  -->
+    <string name="settings_title">設定</string>
+    <string name="settings_rec_language">認識言語</string>
+    <string name="settings_trans_language">翻訳言語</string>
+    <string name="settings_offline">オフラインモード</string>
+    <string name="settings_selected">選択してください</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">翻訳モード選択</string>
     <string name="second_fragment_label">リアルタイム翻訳</string>
