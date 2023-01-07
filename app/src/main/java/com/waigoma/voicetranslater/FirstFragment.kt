@@ -31,6 +31,8 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_recognizeFragment)
         }
 
+        // 未実装
+        binding.buttonRealtime.isEnabled = false
         binding.buttonRealtime.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
