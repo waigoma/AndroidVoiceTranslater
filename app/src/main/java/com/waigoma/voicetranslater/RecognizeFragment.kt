@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.waigoma.voicetranslater.api.TranslateText
 import com.waigoma.voicetranslater.databinding.FragmentRecognizeBinding
 import com.waigoma.voicetranslater.api.VoiceRecognize.Companion as VoiceRecComp
 
@@ -20,14 +21,15 @@ import com.waigoma.voicetranslater.api.VoiceRecognize.Companion as VoiceRecComp
  */
 class RecognizeFragment : Fragment() {
     private var _binding: FragmentRecognizeBinding? = null
-    private lateinit var textView: TextView
+    private lateinit var recText: TextView
+    private lateinit var transText: TextView
     private lateinit var recLang: VoiceRecComp.Lang
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
     // 音声認識の結果を受け取るための Activity の起動
-    private var resultLauncher = registerForActivityResult(
+    private val recLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
         if (it.resultCode != Activity.RESULT_OK)
@@ -37,12 +39,15 @@ class RecognizeFragment : Fragment() {
         val results = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
         val spokenText = results?.get(0)
 
-        textView.text = spokenText
+        recText.text = spokenText
+        translate(spokenText!!, transText)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentRecognizeBinding.inflate(inflater, container, false)
-        textView = binding.textviewFirst
+
+        recText = binding.textviewRec
+        transText = binding.textviewTrans
 
         checkMicPermission()
 
@@ -85,15 +90,26 @@ class RecognizeFragment : Fragment() {
 
     /**
      * 音声認識を開始する
+     * @param langType 認識する言語
      */
     private fun speech(langType: VoiceRecComp.Lang) {
         val intent = VoiceRecComp.speech(langType)
 
         try {
-            resultLauncher.launch(intent)
+            recLauncher.launch(intent)
         } catch (e: Exception) {
             e.printStackTrace()
-            textView.text = "エラーが発生しました。\n${e.message}"
+            recText.text = "エラーが発生しました。\n${e.message}"
         }
+    }
+
+    /**
+     * 翻訳する
+     * @param text 翻訳するテキスト
+     * @param transTextView 翻訳結果を表示する TextView
+     */
+    private fun translate(text: String, transTextView: TextView) {
+        val translateText = TranslateText()
+        translateText.translate(text, "ja", "en", transTextView)
     }
 }
