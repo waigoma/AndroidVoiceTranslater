@@ -4,6 +4,10 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.ArrayAdapter
 
+/**
+ * 検索可能スピナーのテキスト入力を監視するクラス
+ * @param adapter 検索可能スピナーのダイアログの ListView のアダプター
+ */
 class SettingTextWatcher(
     private val adapter: ArrayAdapter<String>
 ) : TextWatcher {

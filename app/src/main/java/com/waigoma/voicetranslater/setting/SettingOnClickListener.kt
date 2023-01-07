@@ -9,6 +9,14 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * 設定画面の検索可能スピナーをクリックしたときの処理
+ * @param activity 設定画面のアクティビティ
+ * @param dialogLayout 検索可能スピナーのダイアログのレイアウト
+ * @param editTextId 検索可能スピナーのダイアログの EditText の ID
+ * @param listViewId 検索可能スピナーのダイアログの ListView の ID
+ * @param textView 検索可能スピナーのダイアログの TextView
+ */
 class SettingOnClickListener(
     private val activity: AppCompatActivity,
     private val dialogLayout: Int,
