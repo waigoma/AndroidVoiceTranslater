@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.waigoma.voicetranslater.MainActivity
 import com.waigoma.voicetranslater.R
 import com.waigoma.voicetranslater.api.TranslateText
 import com.waigoma.voicetranslater.databinding.FragmentRecognizeBinding
@@ -21,10 +22,10 @@ import com.waigoma.voicetranslater.api.VoiceRecognize.Companion as VoiceRecComp
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class RecognizeFragment : Fragment() {
+    private val dataManager = MainActivity.settings
     private var _binding: FragmentRecognizeBinding? = null
     private lateinit var recText: TextView
     private lateinit var transText: TextView
-    private lateinit var recLang: VoiceRecComp.Lang
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
@@ -58,11 +59,9 @@ class RecognizeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recLang = VoiceRecComp.Lang.OFFLINE
-
         binding.buttonStartStop.setOnClickListener {
             checkMicPermission()
-            speech(recLang)
+            speech()
         }
     }
 
@@ -91,10 +90,10 @@ class RecognizeFragment : Fragment() {
 
     /**
      * 音声認識を開始する
-     * @param langType 認識する言語
      */
-    private fun speech(langType: VoiceRecComp.Lang) {
-        val intent = VoiceRecComp.speech(langType)
+    private fun speech() {
+        val lang = dataManager.getLocaleSystemName(dataManager.data.RecognizeLang)
+        val intent = VoiceRecComp.speech(lang, dataManager.data.offlineMode)
 
         try {
             recLauncher.launch(intent)
@@ -111,6 +110,8 @@ class RecognizeFragment : Fragment() {
      */
     private fun translate(text: String, transTextView: TextView) {
         val translateText = TranslateText()
-        translateText.translate(text, "ja", "en", transTextView)
+        val source = dataManager.getLocaleSystemName(dataManager.data.RecognizeLang)
+        val target = dataManager.getLocaleSystemName(dataManager.data.TranslateLang)
+        translateText.translate(text, source, target, transTextView)
     }
 }
