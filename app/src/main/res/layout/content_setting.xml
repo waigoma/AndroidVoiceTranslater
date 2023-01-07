@@ -6,28 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".SettingActivity">
 
-    <Spinner
-        android:id="@+id/spinner_setting_rec"
+    <TextView
+        android:id="@+id/sspinner_setting_rec"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/settings_selected"
+        android:layout_marginTop="32dp"
+        android:background="@android:drawable/editbox_background"
+        android:gravity="center_vertical"
+        android:hint="@string/settings_hint_rec_language"
+        android:padding="12dp"
+        android:textColorHint="#757575"
+        android:textColor="#0f0f0f"
+        app:drawableEndCompat="@drawable/ic_arrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_setting_rec"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        tools:ignore="MissingConstraints" />
 
-    <Spinner
-        android:id="@+id/spinner_setting_trans"
+    <TextView
+        android:id="@+id/sspinner_setting_trans"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/settings_selected"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="90dp"
+        android:background="@android:drawable/editbox_background"
+        android:gravity="center_vertical"
+        android:hint="@string/settings_hint_trans_language"
+        android:padding="12dp"
+        android:textColorHint="#757575"
+        android:textColor="#0f0f0f"
+        app:drawableEndCompat="@drawable/ic_arrow"
+        app:layout_constraintBottom_toTopOf="@+id/switch_setting_offline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_setting_trans" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_setting_trans"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textview_setting_rec"
@@ -38,7 +53,7 @@
         android:text="@string/settings_rec_language"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_setting_rec"
+        app:layout_constraintBottom_toTopOf="@+id/sspinner_setting_rec"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,7 +69,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_setting_rec" />
+        app:layout_constraintTop_toBottomOf="@+id/sspinner_setting_rec" />
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_setting_offline"
@@ -65,5 +80,5 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_setting_trans" />
+        app:layout_constraintTop_toBottomOf="@+id/sspinner_setting_trans" />
 </androidx.constraintlayout.widget.ConstraintLayout>
