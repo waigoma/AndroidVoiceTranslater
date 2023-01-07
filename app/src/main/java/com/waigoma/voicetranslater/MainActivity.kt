@@ -8,11 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.waigoma.voicetranslater.databinding.ActivityMainBinding
+import com.waigoma.voicetranslater.setting.SettingManager
 
+/**
+ * メイン画面
+ * 設定のデータをシングルトンで保持
+ * オプションメニューの設定
+ */
 class MainActivity : AppCompatActivity() {
+    companion object {
+        lateinit var settings : SettingManager
+    }
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
@@ -27,6 +35,9 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        settings = SettingManager(this)
+        settings.initialize()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -5,22 +5,38 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import com.waigoma.voicetranslater.databinding.ActivitySettingBinding
 import com.waigoma.voicetranslater.setting.SettingData
 import com.waigoma.voicetranslater.setting.SettingOnClickListener
 
+/**
+ * 設定画面
+ */
 class SettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingBinding
+    private val settingData = MainActivity.settings.data
+    private lateinit var textViewRec: TextView
+    private lateinit var textViewTrans: TextView
+    private lateinit var offlineMode: SwitchCompat
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SettingData.initialize()
 
+        SettingData.initialize()
         binding = ActivitySettingBinding.inflate(layoutInflater)
+        textViewRec = binding.root.findViewById(R.id.sspinner_setting_rec)
+        textViewTrans = binding.root.findViewById(R.id.sspinner_setting_trans)
+        offlineMode = binding.root.findViewById(R.id.switch_setting_offline)
+
+
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
 
         setSpinner()
+        textViewRec.text = settingData.RecognizeLang
+        textViewTrans.text = settingData.TranslateLang
+        offlineMode.isChecked = settingData.offlineMode
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -37,6 +53,10 @@ class SettingActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
+                settingData.RecognizeLang = textViewRec.text.toString()
+                settingData.TranslateLang = textViewTrans.text.toString()
+                settingData.offlineMode = offlineMode.isChecked
+                MainActivity.settings.save()
                 finish()
                 true
             }
@@ -44,9 +64,12 @@ class SettingActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 検索可能スピナーの生成
+     */
     private fun setSpinner() {
-        val textViewRec = findViewById<TextView>(R.id.sspinner_setting_rec)
-        val textViewTrans = findViewById<TextView>(R.id.sspinner_setting_trans)
+        textViewRec.text = settingData.RecognizeLang
+        textViewTrans.text = settingData.TranslateLang
 
         textViewRec.setOnClickListener(
             SettingOnClickListener(
