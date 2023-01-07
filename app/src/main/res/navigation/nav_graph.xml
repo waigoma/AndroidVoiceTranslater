@@ -15,7 +15,7 @@
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
         <action
-            android:id="@+id/action_FirstFragment_to_recognizeFragment"
+            android:id="@+id/action_FirstFragment_to_RecognizeFragment"
             app:destination="@id/RecognizeFragment" />
     </fragment>
     <fragment

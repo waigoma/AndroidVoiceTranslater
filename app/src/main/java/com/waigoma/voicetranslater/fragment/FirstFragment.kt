@@ -29,7 +29,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonBatch.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_recognizeFragment)
+            findNavController().navigate(R.id.action_FirstFragment_to_RecognizeFragment)
         }
 
         // 未実装
