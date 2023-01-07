@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">VoiceTranslater</string>
+    <string name="title_activity_setting">Settings</string>
     <string name="action_settings">Settings</string>
+    <string name="action_dummy">Dummy</string>
 
     <string name="ok">OK</string>
 
