@@ -13,7 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.waigoma.voicetranslater.databinding.FragmentRecognizeBinding
-import com.waigoma.voicetranslater.VoiceRecognize.Companion as VoiceRecComp
+import com.waigoma.voicetranslater.api.VoiceRecognize.Companion as VoiceRecComp
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.

@@ -1,4 +1,4 @@
-package com.waigoma.voicetranslater
+package com.waigoma.voicetranslater.api
 
 import android.content.Intent
 import android.speech.RecognizerIntent
