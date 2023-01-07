@@ -24,6 +24,9 @@
     <string name="settings_title">設定</string>
     <string name="settings_rec_language">認識言語</string>
     <string name="settings_trans_language">翻訳言語</string>
+    <string name="settings_hint_rec_language">音声認識の言語を選択</string>
+    <string name="settings_hint_trans_language">翻訳する言語を選択</string>
+    <string name="settings_search_hint">検索...</string>
     <string name="settings_offline">オフラインモード</string>
     <string name="settings_selected">選択してください</string>
 
