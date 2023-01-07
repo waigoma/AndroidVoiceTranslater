@@ -1,4 +1,4 @@
-package com.waigoma.voicetranslater
+package com.waigoma.voicetranslater.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.waigoma.voicetranslater.R
 
 import com.waigoma.voicetranslater.databinding.FragmentFirstBinding
 

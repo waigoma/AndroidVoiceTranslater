@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.waigoma.voicetranslater.FirstFragment"
+        android:name="com.waigoma.voicetranslater.fragment.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
 
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.waigoma.voicetranslater.SecondFragment"
+        android:name="com.waigoma.voicetranslater.fragment.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second">
 
@@ -30,6 +30,6 @@
     </fragment>
     <fragment
         android:id="@+id/RecognizeFragment"
-        android:name="com.waigoma.voicetranslater.RecognizeFragment"
+        android:name="com.waigoma.voicetranslater.fragment.RecognizeFragment"
         android:label="@string/recognize_fragment_label" />
 </navigation>
