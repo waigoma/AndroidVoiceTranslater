@@ -37,6 +37,6 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_first_fragment">翻訳に使用するモードを選択してください。\n\nBatch は逐次翻訳、Realtime はリアルタイム翻訳です。\n右上のメニューバーから設定を変更できます。</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
