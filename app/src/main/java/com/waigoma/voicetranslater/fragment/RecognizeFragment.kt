@@ -74,16 +74,16 @@ class RecognizeFragment : Fragment() {
      * マイクへのアクセス権限を確認する
      */
     private fun checkMicPermission() {
-        val granted = ActivityCompat.checkSelfPermission(context!!, android.Manifest.permission.RECORD_AUDIO)
+        val granted = ActivityCompat.checkSelfPermission(this.requireContext(), android.Manifest.permission.RECORD_AUDIO)
         if (granted != PackageManager.PERMISSION_GRANTED) {
             if (shouldShowRequestPermissionRationale(android.Manifest.permission.RECORD_AUDIO)) {
                 val builder = AlertDialog.Builder(activity)
                 builder.setMessage(R.string.permission_record_audio_message)
                     .setPositiveButton(R.string.ok) { _, _ ->
-                        ActivityCompat.requestPermissions(activity!!, arrayOf(android.Manifest.permission.RECORD_AUDIO), 1)
+                        ActivityCompat.requestPermissions(this.requireActivity(), arrayOf(android.Manifest.permission.RECORD_AUDIO), 1)
                     }
             } else {
-                ActivityCompat.requestPermissions(activity!!, arrayOf(android.Manifest.permission.RECORD_AUDIO), 1)
+                ActivityCompat.requestPermissions(this.requireActivity(), arrayOf(android.Manifest.permission.RECORD_AUDIO), 1)
             }
         }
     }
