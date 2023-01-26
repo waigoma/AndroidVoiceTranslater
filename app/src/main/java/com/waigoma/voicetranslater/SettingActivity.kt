@@ -12,6 +12,7 @@ import com.waigoma.voicetranslater.setting.SettingOnClickListener
 
 /**
  * 設定画面
+ * 各種設定を SharedPreferences に保存
  */
 class SettingActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingBinding
