@@ -17,25 +17,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    singingConfigs {
-        release {
-            // Load local.properties file
-            def localProperties = new Properties()
-            localProperties.load(new FileInputStream(rootProject.file('local.properties')))
-            // Use the object to access properties
-            storeFile file(localProperties['STORE_FILE'])
-            storePassword localProperties['STORE_PASSWORD']
-            keyAlias localProperties['KEY_ALIAS']
-            keyPassword localProperties['KEY_PASSWORD']
-        }
-    }
-
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            singingConfigs signingConfigs.release
         }
     }
     compileOptions {
