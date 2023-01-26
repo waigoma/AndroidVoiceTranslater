@@ -29,17 +29,23 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+    - name: Set secret properties
+      env:
+        LOCAL_PROPERTIES: ${{ secrets.LOCAL_PROPERTIES }}
+      run: echo "$LOCAL_PROPERTIES" > ./local.properties
+
+    - name: Prepare release keystore
+      run: |
+        echo "${{ secrets.BASE_64_SIGNING_KEY }}" > release_keystore.jks.asc
+        gpg -d --passphrase "${{ secrets.BASE_64_SIGNING_KEY_PASSPHRASE }}" --batch release_keystore.jks.asc > app/release_keystore.jks
+
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
 
-    # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
-    - name: Publish to GitHub Packages
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      with:
-        arguments: publish
+    - name: Build release artifact
       env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        VERSION_CODE: ${{ github.run_number }}
+      run: ./gradlew assembleRelease
