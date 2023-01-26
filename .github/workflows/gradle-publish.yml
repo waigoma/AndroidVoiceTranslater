@@ -31,8 +31,8 @@ jobs:
 
     - name: Set Secret Properties
         env:
-          - LOCAL_PROPERTIES: ${{ secrets.LOCAL_PROPERTIES }}
-        run: echo "$LOCAL_PROPERTIES" > local.properties
+          LOCAL_PROPERTIES: ${{ secrets.LOCAL_PROPERTIES }}
+        run: echo "$LOCAL_PROPERTIES" > ./local.properties
 
     - name: Prepare release keystore
       run: |
